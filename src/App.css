@@ -1,0 +1,36 @@
+body {
+  background-color: rgb(17, 17, 17);
+  color: aliceblue;
+  font-family: system-ui;
+  font-size: 1.2em;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  
+  gap: 40px;
+}
+
+.home-page h1 {
+  text-align: center;
+}
+
+.link{
+  background-color: #25D366;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  
+  width: fit-content;
+  padding: .4em 1em;
+  border-radius: .4em;
+}
+
+
+/*Cambiar esto*/
+h4 {
+  margin: 0;
+}

@@ -1,0 +1,75 @@
+.admin-page {
+  padding: 0 2em;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.admin-page a {
+  background-color: #25D366;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  
+  padding: .4em 1.4em;
+  border-radius: .4em;
+}
+
+/* forms */
+
+.admin-page form {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+
+  gap: 20px;
+}
+
+.admin-page input {
+  padding: .6em;
+  border-radius: .4em;
+}
+
+.boton {
+  width: fit-content;
+  padding: .6em 2em;
+  border-radius: .4em;
+}
+
+
+/* listas */
+
+.lista-admin {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.lista-admin li {
+  display: flex;
+  gap: 40px;
+  background-color: #2b2b2b;
+
+  padding: 1em;
+  border-radius: .4em;
+}
+
+.lista-admin img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+/* botones */
+
+.botones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.botones button {
+  padding: .4em 1em;
+  border-radius: 1em;
+}
