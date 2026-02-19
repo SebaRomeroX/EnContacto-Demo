@@ -4,7 +4,7 @@ import { Mensaje } from './Mensaje'
 
 export const Chat = () => {
   const { sala } = useContext(SalasContext)
-  const contenedorRef = useRef(null);
+  const contenedorRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     if (contenedorRef.current) {

@@ -1,11 +1,13 @@
-import { useContext, useState } from "react"
+import { useContext, useState, type FormEvent } from "react"
 import { SalasContext } from "../../context/salasContext"
 
-export const EditForm = ({ nombre, id, ocultar }) => {
+type FormProps = { nombre: string, id: number, ocultar: () => void }
+export const EditForm = ({ nombre, id, ocultar }: FormProps) => {
   const { cambiarNombre } = useContext(SalasContext)
   const [input, setInput] = useState(nombre)
 
-  function hanldeSubmit (e) {
+  // DEPRECATED
+  function hanldeSubmit (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     cambiarNombre(input , id)
     ocultar()

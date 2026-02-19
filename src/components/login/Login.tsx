@@ -1,5 +1,5 @@
 import './Login.css'
-import { useContext, useRef, useState } from 'react'
+import { useContext, useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { UsuarioContext } from '../../context/usuarioContext'
 import { useNavigate } from 'react-router'
 
@@ -8,24 +8,25 @@ export const Login = () => {
   const [error, setError] = useState('')
   const { logear } = useContext(UsuarioContext)
   const navigate = useNavigate()
-  const inputRef = useRef()
+  const inputRef = useRef<HTMLInputElement>(null)
 
-  function handleUser (e) {
+  function handleUser (e: ChangeEvent<HTMLInputElement>) {
     setInputs({...inputs, user: e.target.value})
   }
 
-  function handlePass (e) {
+  function handlePass (e: ChangeEvent<HTMLInputElement>) {
     setInputs({...inputs, pass: e.target.value})
   }
 
-  function handleLog (e) {
+  ///// HAY QUE VER QUE PINGO PASA AQUI ??? PORQUE DEPRECATED ??????? !!!!!!
+  function handleLog (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (inputs.user && inputs.pass) {
       if (logear(inputs)) {
         navigate('/chat')
       } else {
         setError('Error en los datos ingresados')
-        inputRef.current.focus()
+        inputRef.current?.focus()
       }
       setInputs({ user: '', pass: '' })
     }

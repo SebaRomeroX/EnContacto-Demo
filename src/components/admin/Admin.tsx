@@ -17,8 +17,13 @@ export const Admin = () => {
   const user = localStorage.getItem('user')
 
   useEffect(() => {
+    if (!user) {
+      navigate('/login')
+      return
+    }
+
     const userParsed = JSON.parse(user)
-    if (!user || userParsed.rol !== 'admin')
+    if (userParsed.rol !== 'admin')
     {
       navigate('/login')
     }

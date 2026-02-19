@@ -9,10 +9,10 @@ export const PestañaUsuario = () => {
   return (
     <section className='pestaña-usuario-section'>
       <section className='info'>
-        <img src={`https://unavatar.io/${usuario.foto}`}/>
-        <h4>{usuario.nombre}</h4>  
+        <img src={`https://unavatar.io/${usuario?.foto}`}/>
+        <h4>{usuario?.nombre}</h4>  
       </section>
-      { mostrar && <MenuUser usuario={usuario} /> }
+      { mostrar && usuario && <MenuUser usuario={usuario} /> }
       <button className='tip' onClick={() => setMostrar(!mostrar)}>{mostrar ? '▲' : '▼'} </button>
     </section>
   )

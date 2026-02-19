@@ -1,10 +1,12 @@
 import { useContext } from "react"
 import { UsuarioContext } from "../../../context/usuarioContext"
+import type { MensajeType } from "../../../mock"
 
-export const Mensaje = ({ msj }) => {
+type MensajeProps = { msj: MensajeType }
+export const Mensaje = ({ msj }: MensajeProps) => {
   const { usuarios } = useContext(UsuarioContext)
 
-  function getUserName (id) {
+  function getUserName (id: number) {
     const user = usuarios.find(user => user.id === id)
     return user
       ? { foto: user.foto, nombre: user.nombre}

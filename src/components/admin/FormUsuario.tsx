@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, type FormEvent } from 'react'
 import { UsuarioContext } from '../../context/usuarioContext'
 
 export const FormUsuario = () => {
@@ -6,10 +6,13 @@ export const FormUsuario = () => {
   const [nombre, setNombre] = useState('')
   const [foto, setFoto] = useState('')
 
-  function handleCrear (e) {
+  // AQUI OTRO DEPRECATED
+  function handleCrear (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const fotoParam = foto ? foto : 'null'
-    nombre && crearUsuario(nombre, fotoParam)
+
+    if (!nombre) return
+    crearUsuario(nombre, fotoParam)
     setNombre('')
     setFoto('')
   }

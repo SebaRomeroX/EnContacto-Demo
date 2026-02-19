@@ -1,7 +1,9 @@
 import { useContext } from "react"
 import { UsuarioContext } from "../../context/usuarioContext"
+import type { Usuario } from "../../mock"
 
-export const FichaUsuario = ({ usuario }) => {
+type FichaProps = { usuario: Usuario }
+export const FichaUsuario = ({ usuario }: FichaProps) => {
   const { eliminarUsuario } = useContext(UsuarioContext)
 
   if (usuario.rol === 'admin') return

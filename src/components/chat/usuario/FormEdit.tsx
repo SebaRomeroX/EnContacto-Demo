@@ -1,13 +1,17 @@
-import { useContext, useState } from "react"
+import { useContext, useState, type FormEvent } from "react"
 import { UsuarioContext } from "../../../context/usuarioContext"
 
-export const FormEdit = ({ id, cerrar }) => {
+type FormProps = { id: number, cerrar: () => void }
+export const FormEdit = ({ id, cerrar } : FormProps) => {
   const { editarUsuario, usuario } = useContext(UsuarioContext)
-  const [inputFoto, setFoto] = useState(usuario.foto)
-  const [inputContra, setContra] = useState(usuario.contra)
+  const [inputFoto, setFoto] = useState(usuario?.foto)
+  const [inputContra, setContra] = useState(usuario?.contra)
 
-  function handleSubmit (e) {
+  // AQUI OTRO DEPRECATED
+  function handleSubmit (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (!inputContra || ! inputFoto) return
+
     editarUsuario(inputContra, inputFoto, id)
     cerrar()
   }

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { UsuarioContext } from '../../context/usuarioContext'
 import { SalasContext } from '../../context/salasContext'
 
@@ -7,13 +7,13 @@ export const CajaMensaje = () => {
   const { usuario } = useContext(UsuarioContext)
   const { agregarMensaje } = useContext(SalasContext)
   const [texto, setTexto] = useState('')
-  const inputRef = useRef(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    inputRef.current.focus()
+    inputRef.current?.focus()
   })
 
-  function handleTexto (e) {
+  function handleTexto (e: ChangeEvent<HTMLInputElement>) {
     const newTexto = e.target.value
 
     if (newTexto === ' ') return
@@ -22,9 +22,10 @@ export const CajaMensaje = () => {
     setTexto(newTexto)
   }
 
-  function handleEscribir (e) {
+  // ARREGLAR AQUI TAMBIEN DEPRECATED
+  function handleEscribir (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (!texto) return
+    if (!texto || !usuario) return
 
     setTexto('')
     agregarMensaje(texto, usuario.id)

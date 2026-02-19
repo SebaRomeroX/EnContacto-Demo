@@ -1,22 +1,42 @@
-import { createContext } from 'react'
-import { USUARIOS } from '../mock'
+import { createContext, type PropsWithChildren } from 'react'
+import { USUARIOS, type Usuario } from '../mock'
 import { useState } from 'react'
 
-export const UsuarioContext = createContext()
+interface UsuarioContextType {
+  usuario: Usuario | undefined
+  logear: (inputs: {user: string, pass: string}) => boolean | undefined
+  logout: () => void
+  usuarios: Usuario[]
+  crearUsuario: (nombre: string, foto: string) => void
+  eliminarUsuario: (id: number) => void
+  editarUsuario: (inputContra: string, inputFoto: string, id: number) => void
+}
 
-function getUsuario (admin) {
+const defaultContextValue: UsuarioContextType = {
+  usuario: undefined,
+  logear: () => false,
+  logout: () => {},
+  usuarios: [],
+  crearUsuario: () => {},
+  eliminarUsuario: () => {},
+  editarUsuario: () => {},
+};
+
+export const UsuarioContext = createContext(defaultContextValue)
+
+function getUsuario (admin: Usuario) {
   const user = localStorage.getItem('user')
   return user ? JSON.parse(user) : admin // para desarrollo
   // return JSON.parse(user)
 }
 
-export const UsuarioProvider = ({ children }) => {
+export const UsuarioProvider = ({ children }: PropsWithChildren) => {
   const [usuarios, setUsuarios] = useState(USUARIOS)
   const [usuario, setUsuario] = useState(getUsuario(usuarios[3])) // temporal, desarrollo
 
     // REDUCER ??
   
-  function logear (inputs) {
+  function logear (inputs: {user: string, pass: string}) {
     const newUsuario = usuarios.find(user =>
       user.nombre === inputs.user &&
       user.contra === inputs.pass
@@ -32,10 +52,10 @@ export const UsuarioProvider = ({ children }) => {
 
   function logout () {
     localStorage.removeItem('user')
-    setUsuario()
+    setUsuario(undefined)
   }
 
-  function crearUsuario (nombre, foto) {
+  function crearUsuario (nombre: string, foto: string) {
     if (usuarios.find(user => user.nombre === nombre)) return
     console.log(foto)
 
@@ -45,12 +65,12 @@ export const UsuarioProvider = ({ children }) => {
     setUsuarios([...usuarios, newUsuario])
   }
 
-  function eliminarUsuario (id) {
+  function eliminarUsuario (id: number) {
     const newUsuarios = usuarios.filter(user => user.id !== id)
     setUsuarios(newUsuarios)
   }
 
-  function editarUsuario (inputContra, inputFoto, id) {
+  function editarUsuario (inputContra: string, inputFoto: string, id: number) {
     const newUsuarios = usuarios.map(user => (
       user.id === id
         ? {...user, foto: inputFoto, contra: inputContra}
@@ -62,16 +82,18 @@ export const UsuarioProvider = ({ children }) => {
     setUsuario(userActualizado)
   }
 
+  const value: UsuarioContextType = {
+    usuario,
+    logear,
+    logout,
+    usuarios,
+    crearUsuario,
+    eliminarUsuario,
+    editarUsuario
+  }
+
   return (
-    <UsuarioContext.Provider value={{
-      usuario,
-      logear,
-      logout,
-      usuarios,
-      crearUsuario,
-      eliminarUsuario,
-      editarUsuario
-    }}>
+    <UsuarioContext.Provider value={value}>
       {children}
     </UsuarioContext.Provider>
   )

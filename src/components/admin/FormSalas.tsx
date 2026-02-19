@@ -1,11 +1,12 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, type FormEvent } from 'react'
 import { SalasContext } from '../../context/salasContext'
 
 export const FormSala = () => {
   const { crearSala } = useContext(SalasContext)
   const [nombre, setNombre] = useState('')
 
-  function handleCrear (e) {
+  // DEPRECATED
+  function handleCrear (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (nombre) {
       crearSala(nombre)

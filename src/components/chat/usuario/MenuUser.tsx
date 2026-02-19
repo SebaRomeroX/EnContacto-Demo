@@ -3,21 +3,23 @@ import { UsuarioContext } from "../../../context/usuarioContext"
 import { SalasContext } from "../../../context/salasContext"
 import { useNavigate } from "react-router"
 import { FormEdit } from "./FormEdit"
+import type { Usuario } from "../../../mock"
 
-export const MenuUser = ({ usuario }) => {
+type MenuProps = { usuario: Usuario }
+export const MenuUser = ({ usuario }: MenuProps) => {
   const { logout } = useContext(UsuarioContext)
   const { asignarSala } = useContext(SalasContext)
   const navigate = useNavigate()
   const [editar, setEditar] = useState(false)
 
   function handleLogout () {
-    asignarSala()
+    asignarSala(0)
     logout()
     navigate('/login')
   }
 
   function handleAdmin () {
-    asignarSala()
+    asignarSala(0)
     navigate('/admin')
   }
 
