@@ -2,7 +2,7 @@ import './Login.css'
 import { useContext, useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { UsuarioContext } from '../../context/usuarioContext'
 import { useNavigate } from 'react-router'
-import { RUTAS } from '../../consts'
+import { RUTAS } from '../../constants/consts'
 
 const inputsIniciales = {user: '', pass: ''}
 
@@ -17,7 +17,6 @@ export const Login = () => {
     setInputs(prev => ({...prev, [campo]: e.target.value}))
   }
 
-  ///// HAY QUE VER QUE PINGO PASA AQUI ??? PORQUE DEPRECATED ??????? !!!!!!
   function handleLog (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (inputs.user && inputs.pass) {

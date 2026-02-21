@@ -5,7 +5,6 @@ export const FormSala = () => {
   const { crearSala } = useContext(SalasContext)
   const [nombre, setNombre] = useState('')
 
-  // DEPRECATED
   function handleCrear (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (nombre) {

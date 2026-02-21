@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { UsuarioContext } from "../../../context/usuarioContext"
-import type { Id, MensajeType } from "../../../types"
+import type { Id, MensajeType } from "../../../types/types"
 
 const usuarioFantasma = { foto: 'undefined', nombre: 'eliminado'}
 

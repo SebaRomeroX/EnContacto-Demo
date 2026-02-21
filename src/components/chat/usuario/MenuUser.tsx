@@ -3,8 +3,8 @@ import { UsuarioContext } from "../../../context/usuarioContext"
 import { SalasContext } from "../../../context/salasContext"
 import { useNavigate } from "react-router"
 import { FormEdit } from "./FormEdit"
-import { RUTAS } from "../../../consts"
-import type { Usuario } from "../../../types"
+import { RUTAS } from "../../../constants/consts"
+import type { Usuario } from "../../../types/types"
 
 type MenuProps = { usuario: Usuario }
 export const MenuUser = ({ usuario }: MenuProps) => {

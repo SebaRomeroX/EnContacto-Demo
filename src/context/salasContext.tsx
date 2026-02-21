@@ -1,7 +1,7 @@
 import { createContext, useState, type PropsWithChildren } from 'react'
-import { SALAS } from '../mock'
-import type { Id, Sala } from '../types';
-import { crearNewId } from '../crearNewId';
+import type { Id, Sala } from '../types/types';
+import { crearNewId } from '../utils/crearNewId';
+import { SALAS } from '../mocks/mock';
 
 interface SalaContextType {
   salaActiva: Sala | undefined;

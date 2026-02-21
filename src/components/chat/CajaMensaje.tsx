@@ -23,7 +23,6 @@ export const CajaMensaje = () => {
     setTexto(newTexto)
   }
 
-  // ARREGLAR AQUI TAMBIEN DEPRECATED
   function handleEscribir (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!texto || !usuario) return

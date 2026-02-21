@@ -7,7 +7,7 @@ import { FormUsuario } from './FormUsuario'
 import { FormSala } from './FormSalas'
 import { FichaSala } from './FichaSala'
 import { FichaUsuario } from './FichaUsuario'
-import { RUTAS } from '../../consts'
+import { RUTAS } from '../../constants/consts'
 
 
 export const Admin = () => {

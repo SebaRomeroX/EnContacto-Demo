@@ -3,7 +3,7 @@ import './App.css'
 import { Login } from './components/login/Login'
 import { PaginaChats } from './components/chat/PaginaChats'
 import { Admin } from './components/admin/Admin'
-import { RUTAS } from './consts'
+import { RUTAS } from './constants/consts'
 
 const Home = () => {
   return (

@@ -1,8 +1,8 @@
 import { createContext, type PropsWithChildren } from 'react'
-import { USUARIOS } from '../mock'
 import { useState } from 'react'
-import type { Id, UserRol, Usuario } from '../types'
-import { crearNewId } from '../crearNewId'
+import type { Id, UserRol, Usuario } from '../types/types'
+import { crearNewId } from '../utils/crearNewId'
+import { USUARIOS } from '../mocks/mock'
 
 interface UsuarioContextType {
   usuario: Usuario | undefined

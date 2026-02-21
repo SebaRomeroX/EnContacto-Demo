@@ -1,4 +1,4 @@
-import type { Sala, Usuario } from "./types"
+import type { Sala, Usuario } from "../types/types"
 
 export const USUARIOS: Usuario[] = [
   {

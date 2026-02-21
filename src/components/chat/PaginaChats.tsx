@@ -4,7 +4,7 @@ import { Chat } from './sala/Chat'
 import { CajaMensaje } from './CajaMensaje'
 import { PestañaUsuario } from './usuario/PestañaUsuario'
 import { useNavigate } from 'react-router'
-import { RUTAS } from '../../consts'
+import { RUTAS } from '../../constants/consts'
 import { useEffect } from 'react'
 
 export const PaginaChats = () => {

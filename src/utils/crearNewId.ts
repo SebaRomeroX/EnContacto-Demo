@@ -1,5 +1,5 @@
-import { SALAS, USUARIOS } from "./mock";
-import type { Id, IdClase } from "./types";
+import { SALAS, USUARIOS } from "../mocks/mock";
+import type { Id, IdClase } from "../types/types";
 
 export function crearNewId (IdClase: IdClase) {
   let lista

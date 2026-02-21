@@ -6,7 +6,6 @@ export const FormUsuario = () => {
   const [nombre, setNombre] = useState('')
   const [foto, setFoto] = useState('')
 
-  // AQUI OTRO DEPRECATED
   function handleCrear (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const fotoParam = foto ? foto : 'null'

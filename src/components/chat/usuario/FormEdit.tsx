@@ -1,6 +1,6 @@
 import { useContext, useState, type FormEvent } from "react"
 import { UsuarioContext } from "../../../context/usuarioContext"
-import type { Id } from "../../../types"
+import type { Id } from "../../../types/types"
 
 type FormProps = { id: Id, cerrar: () => void }
 export const FormEdit = ({ id, cerrar } : FormProps) => {
@@ -8,7 +8,6 @@ export const FormEdit = ({ id, cerrar } : FormProps) => {
   const [inputFoto, setFoto] = useState(usuario?.foto)
   const [inputContra, setContra] = useState(usuario?.contra)
 
-  // AQUI OTRO DEPRECATED
   function handleSubmit (e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!inputContra || ! inputFoto) return
