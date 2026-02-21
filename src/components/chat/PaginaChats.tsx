@@ -5,12 +5,15 @@ import { CajaMensaje } from './CajaMensaje'
 import { PestañaUsuario } from './usuario/PestañaUsuario'
 import { useNavigate } from 'react-router'
 import { RUTAS } from '../../consts'
+import { useEffect } from 'react'
 
 export const PaginaChats = () => {
   const navigate = useNavigate()
   const user = localStorage.getItem('user')
 
-  if (!user) navigate(RUTAS.login)
+  useEffect(() =>{
+    if (!user) navigate(RUTAS.login)
+  }, [])
 
   return (
     user &&

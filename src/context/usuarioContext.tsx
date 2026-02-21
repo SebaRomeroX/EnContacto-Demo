@@ -26,6 +26,7 @@ const defaultContextValue: UsuarioContextType = {
 
 export const UsuarioContext = createContext(defaultContextValue)
 
+// SACAR ESTO A SERVISES
 function getUsuario (admin: Usuario) {
   const user = localStorage.getItem('user')
   return user ? JSON.parse(user) : admin // para desarrollo // siempre logeado

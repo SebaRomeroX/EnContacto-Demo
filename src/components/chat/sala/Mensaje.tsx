@@ -2,6 +2,8 @@ import { useContext } from "react"
 import { UsuarioContext } from "../../../context/usuarioContext"
 import type { Id, MensajeType } from "../../../types"
 
+const usuarioFantasma = { foto: 'undefined', nombre: 'eliminado'}
+
 type MensajeProps = { msj: MensajeType }
 export const Mensaje = ({ msj }: MensajeProps) => {
   const { usuarios } = useContext(UsuarioContext)
@@ -10,7 +12,7 @@ export const Mensaje = ({ msj }: MensajeProps) => {
     const user = usuarios.find(user => user.id === id)
     return user
       ? { foto: user.foto, nombre: user.nombre}
-      : { foto: 'undefined', nombre: 'eliminado'}
+      : { foto: usuarioFantasma.foto, nombre: usuarioFantasma.nombre}
   }
 
   const datos = getUserName(msj.usuarioId)

@@ -1,5 +1,5 @@
 import './Admin.css'
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useMemo } from "react"
 import { SalasContext } from "../../context/salasContext"
 import { UsuarioContext } from "../../context/usuarioContext"
 import { Link, useNavigate } from 'react-router'
@@ -17,19 +17,23 @@ export const Admin = () => {
   const navigate = useNavigate()
   const user = localStorage.getItem('user')
 
-  // REDUNDANCIA QUI NAVEGATE LOGIN
-  useEffect(() => {
-    if (!user) {
-      navigate(RUTAS.login)
-      return
+  const isValidAdmin = useMemo(() => {
+    if (!user) return false;
+    
+    try {
+      const userParsed = JSON.parse(user);
+      return userParsed.rol === 'admin';
+    } catch (error) {
+      console.error('Error parsing user data:', error);
+      return false;
     }
+  }, [user]);
 
-    const userParsed = JSON.parse(user)
-    if (userParsed.rol !== 'admin')
-    {
-      navigate(RUTAS.login)
+  useEffect(() => {
+    if (!isValidAdmin) {
+      navigate(RUTAS.login, { replace: true });
     }
-  }, [])
+  }, [isValidAdmin, navigate]);
 
   return (
     <section className='admin-page'>

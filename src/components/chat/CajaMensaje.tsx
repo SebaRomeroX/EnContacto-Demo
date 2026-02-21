@@ -16,8 +16,9 @@ export const CajaMensaje = () => {
   function handleTexto (e: ChangeEvent<HTMLInputElement>) {
     const newTexto = e.target.value
 
-    if (newTexto === ' ') return
-    if (newTexto.endsWith(' ') && texto.endsWith(' ')) return
+    if (newTexto === ' ' ||
+      newTexto.endsWith(' ') && texto.endsWith(' ')
+    ) return
 
     setTexto(newTexto)
   }

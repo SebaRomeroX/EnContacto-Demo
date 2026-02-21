@@ -4,7 +4,7 @@ import type { Id, Sala } from '../types';
 import { crearNewId } from '../crearNewId';
 
 interface SalaContextType {
-  sala: Sala | undefined;
+  salaActiva: Sala | undefined;
   salas: Sala[];
   agregarMensaje: (texto: string, id: Id) => void;
   asignarSala: (id: Id) => void;
@@ -15,7 +15,7 @@ interface SalaContextType {
 }
 
 const defaultContextValue: SalaContextType = {
-  sala: undefined,
+  salaActiva: undefined,
   salas: [],
   agregarMensaje: () => {},
   asignarSala: () => {},
@@ -28,21 +28,21 @@ const defaultContextValue: SalaContextType = {
 export const SalasContext = createContext<SalaContextType>(defaultContextValue);
 
 export const SalasProvider = ({ children } : PropsWithChildren) => {
-  const [salas, setSalas] = useState(SALAS) // O modificar este ...
-  const [sala, setSala] = useState<Sala>() // <- modificar este nombre para evitar confuciones
+  const [salas, setSalas] = useState(SALAS)
+  const [salaActiva, setSalaActiva] = useState<Sala>()
 
   function asignarSala (id: Id) {
     const newSala = salas.find(salaDB => salaDB.id === id)
-    setSala(newSala)
+    setSalaActiva(newSala)
   }
   
   function agregarMensaje (texto: string, id: Id) {
-    if (!sala) return
+    if (!salaActiva) return
 
     const newMensaje = { usuarioId: id, mensaje: texto }
     
-    const newChat = [...sala.chat, newMensaje]
-    setSala({...sala, chat: newChat})
+    const newChat = [...salaActiva.chat, newMensaje]
+    setSalaActiva({...salaActiva, chat: newChat})
   }
 
   function eliminarSala (id: Id) {
@@ -81,7 +81,7 @@ export const SalasProvider = ({ children } : PropsWithChildren) => {
   }
 
   const value: SalaContextType = {
-    sala,
+    salaActiva,
     salas,
     agregarMensaje,
     asignarSala,
