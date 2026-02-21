@@ -1,6 +1,6 @@
 import { useContext, useState, type FormEvent } from "react"
 import { UsuarioContext } from "../../../context/usuarioContext"
-import type { Id } from "../../../mock"
+import type { Id } from "../../../types"
 
 type FormProps = { id: Id, cerrar: () => void }
 export const FormEdit = ({ id, cerrar } : FormProps) => {

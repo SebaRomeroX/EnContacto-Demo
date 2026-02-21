@@ -3,6 +3,7 @@ import './App.css'
 import { Login } from './components/login/Login'
 import { PaginaChats } from './components/chat/PaginaChats'
 import { Admin } from './components/admin/Admin'
+import { RUTAS } from './consts'
 
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
       <h1>Bienvenid@ a la app de comunicaciones</h1>
       <p>Esta es una plataforma que provee distintas salas de chat</p>
       <p>El perfil de administrador te permitira agregar y eliminar usuarios y salas</p>
-      <Link className='link' to={'/login'}>Iniciar Sesion</Link>
+      <Link className='link' to={RUTAS.login}>Iniciar Sesion</Link>
     </section>
   )
 }
@@ -19,10 +20,10 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path='/' Component={Home} />
-          <Route path='/login' Component={Login} />
-          <Route path='/chat' Component={PaginaChats} />
-          <Route path='/admin' Component={Admin} />
+          <Route path={RUTAS.landing} Component={Home} />
+          <Route path={RUTAS.login} Component={Login} />
+          <Route path={RUTAS.chat} Component={PaginaChats} />
+          <Route path={RUTAS.admin} Component={Admin} />
         </Routes>
       </BrowserRouter>
     )

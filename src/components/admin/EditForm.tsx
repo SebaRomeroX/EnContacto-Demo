@@ -1,6 +1,6 @@
 import { useContext, useState, type FormEvent } from "react"
 import { SalasContext } from "../../context/salasContext"
-import type { Id } from "../../mock"
+import type { Id } from "../../types"
 
 type FormProps = { nombre: string, id: Id, ocultar: () => void }
 export const EditForm = ({ nombre, id, ocultar }: FormProps) => {

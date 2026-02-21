@@ -3,7 +3,8 @@ import { UsuarioContext } from "../../../context/usuarioContext"
 import { SalasContext } from "../../../context/salasContext"
 import { useNavigate } from "react-router"
 import { FormEdit } from "./FormEdit"
-import type { Usuario } from "../../../mock"
+import { RUTAS } from "../../../consts"
+import type { Usuario } from "../../../types"
 
 type MenuProps = { usuario: Usuario }
 export const MenuUser = ({ usuario }: MenuProps) => {
@@ -16,12 +17,12 @@ export const MenuUser = ({ usuario }: MenuProps) => {
   function handleLogout () {
     asignarSala(idInvalido)
     logout()
-    navigate('/login')
+    navigate(RUTAS.login)
   }
 
   function handleAdmin () {
     asignarSala(idInvalido)
-    navigate('/admin')
+    navigate(RUTAS.admin)
   }
 
   return (
@@ -30,7 +31,7 @@ export const MenuUser = ({ usuario }: MenuProps) => {
       : <section className='botones'>
         <button onClick={() => setEditar(true)}>Editar</button>
         { usuario.rol === 'admin' &&
-          <button className="link" onClick={handleAdmin}> Admin </button>
+          <button className="link" onClick={handleAdmin}>Admin</button>
         }
         <button className="link" onClick={handleLogout}>Cerrar Sesion</button>
       </section>

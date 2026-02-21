@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { SalasContext } from "../../context/salasContext"
 import { EditForm } from './EditForm'
-import type { Id } from "../../mock"
+import type { Id } from "../../types"
 
 type FichaProp = { nombre: string, id: Id }
 export const FichaSala = ({ nombre, id }: FichaProp) => {

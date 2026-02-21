@@ -1,6 +1,8 @@
 import { createContext, type PropsWithChildren } from 'react'
-import { USUARIOS, type Id, type UserRol, type Usuario } from '../mock'
+import { USUARIOS } from '../mock'
 import { useState } from 'react'
+import type { Id, UserRol, Usuario } from '../types'
+import { crearNewId } from '../crearNewId'
 
 interface UsuarioContextType {
   usuario: Usuario | undefined
@@ -26,8 +28,8 @@ export const UsuarioContext = createContext(defaultContextValue)
 
 function getUsuario (admin: Usuario) {
   const user = localStorage.getItem('user')
-  return user ? JSON.parse(user) : admin // para desarrollo
-  // return JSON.parse(user)
+  return user ? JSON.parse(user) : admin // para desarrollo // siempre logeado
+  // return JSON.parse(user) // definitivo
 }
 
 export const UsuarioProvider = ({ children }: PropsWithChildren) => {
@@ -43,7 +45,6 @@ export const UsuarioProvider = ({ children }: PropsWithChildren) => {
     )
 
     if (newUsuario) {
-      console.log(newUsuario)
       localStorage.setItem('user', JSON.stringify(newUsuario))
       setUsuario(newUsuario)
       return true
@@ -58,17 +59,10 @@ export const UsuarioProvider = ({ children }: PropsWithChildren) => {
   function crearUsuario (nombre: string, foto: string) {
     if (usuarios.find(user => user.nombre === nombre)) return
 
-    //BOILERPLATE USER
-    // let newId: Id
-    let newId: Id
-    do {
-      newId = `user-${crypto.randomUUID()}`
-    } while (USUARIOS.find(user => user.id == newId));
-
-    //BOILERPLATES
-    //CONTRASEÑA Y ROL => DATOS FIJOS
-    const rol: UserRol = 'user'
-    const newUsuario = { nombre, foto, id: newId, contra: '777', rol }
+    const newId = crearNewId('user')
+    const contra = '777' // ES FIJA PARA TODOS LOS NUEVOS USERS HASTA QUE SE RESUELVA COMO TRATARLO
+    const rol: UserRol = 'user' // SOLO USER // EL ADMIN NO SE DEBERIA PODER CREAR // ADMIN UNICO
+    const newUsuario = { nombre, foto, id: newId, contra, rol }
     setUsuarios([...usuarios, newUsuario])
   }
 

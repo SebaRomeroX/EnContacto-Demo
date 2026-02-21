@@ -1,5 +1,7 @@
 import { createContext, useState, type PropsWithChildren } from 'react'
-import { type Id, type Sala, SALAS } from '../mock'
+import { SALAS } from '../mock'
+import type { Id, Sala } from '../types';
+import { crearNewId } from '../crearNewId';
 
 interface SalaContextType {
   sala: Sala | undefined;
@@ -29,7 +31,6 @@ export const SalasProvider = ({ children } : PropsWithChildren) => {
   const [salas, setSalas] = useState(SALAS) // O modificar este ...
   const [sala, setSala] = useState<Sala>() // <- modificar este nombre para evitar confuciones
 
-  // id type Number !!!!!! hay que cambiar esto !!! algo mas confiable
   function asignarSala (id: Id) {
     const newSala = salas.find(salaDB => salaDB.id === id)
     setSala(newSala)
@@ -52,12 +53,7 @@ export const SalasProvider = ({ children } : PropsWithChildren) => {
   function crearSala (nombre: string) {
     if (salas.find(sala => sala.nombre === nombre)) return
 
-    //ARREGLAR ESTO // CODIGO IMPERATIVO // BOILERPLATE
-    let newId: Id
-    do {
-      newId = `sala-${crypto.randomUUID()}`
-    } while (SALAS.find(sala => sala.id == newId));
-
+    const newId = crearNewId('sala')
     const newSala = { nombre, id: newId, chat: [] }
     setSalas([...salas, newSala])
   }

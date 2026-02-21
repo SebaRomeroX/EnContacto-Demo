@@ -2,6 +2,7 @@ import './Login.css'
 import { useContext, useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { UsuarioContext } from '../../context/usuarioContext'
 import { useNavigate } from 'react-router'
+import { RUTAS } from '../../consts'
 
 export const Login = () => {
   const [inputs, setInputs] = useState({ user: '', pass: '' })
@@ -23,7 +24,7 @@ export const Login = () => {
     e.preventDefault()
     if (inputs.user && inputs.pass) {
       if (logear(inputs)) {
-        navigate('/chat')
+        navigate(RUTAS.chat)
       } else {
         setError('Error en los datos ingresados')
         inputRef.current?.focus()

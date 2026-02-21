@@ -7,6 +7,7 @@ import { FormUsuario } from './FormUsuario'
 import { FormSala } from './FormSalas'
 import { FichaSala } from './FichaSala'
 import { FichaUsuario } from './FichaUsuario'
+import { RUTAS } from '../../consts'
 
 
 export const Admin = () => {
@@ -16,16 +17,17 @@ export const Admin = () => {
   const navigate = useNavigate()
   const user = localStorage.getItem('user')
 
+  // REDUNDANCIA QUI NAVEGATE LOGIN
   useEffect(() => {
     if (!user) {
-      navigate('/login')
+      navigate(RUTAS.login)
       return
     }
 
     const userParsed = JSON.parse(user)
     if (userParsed.rol !== 'admin')
     {
-      navigate('/login')
+      navigate(RUTAS.login)
     }
   }, [])
 
@@ -33,7 +35,7 @@ export const Admin = () => {
     <section className='admin-page'>
       <section>
         <h2>Administrador</h2>
-        <Link to={'/chat'}>Ir a chats</Link>
+        <Link to={RUTAS.chat}>Ir a chats</Link>
       </section>
 
       <section>

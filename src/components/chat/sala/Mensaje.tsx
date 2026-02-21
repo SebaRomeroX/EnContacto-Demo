@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { UsuarioContext } from "../../../context/usuarioContext"
-import type { Id, MensajeType } from "../../../mock"
+import type { Id, MensajeType } from "../../../types"
 
 type MensajeProps = { msj: MensajeType }
 export const Mensaje = ({ msj }: MensajeProps) => {

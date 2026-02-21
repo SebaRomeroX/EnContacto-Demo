@@ -1,15 +1,4 @@
-export type IdClase = 'user' | 'sala'
-export type Id = `${IdClase}-${string}-${string}-${string}-${string}-${string}`;
-
-export type UserRol = 'admin' | 'user'
-
-export type Usuario = {
-  id: Id,
-  foto: string,
-  nombre: string,
-  contra: string,
-  rol: UserRol
-}
+import type { Sala, Usuario } from "./types"
 
 export const USUARIOS: Usuario[] = [
   {
@@ -39,15 +28,6 @@ export const USUARIOS: Usuario[] = [
   },
 ]
 
-export type MensajeType = {
-  mensaje: string,
-  usuarioId: Id,
-}
-export type Sala = {
-  nombre: string,
-  id: Id,
-  chat: MensajeType[]
-}
 export const SALAS: Sala[] = [
   {
     nombre: 'Sala Front',
