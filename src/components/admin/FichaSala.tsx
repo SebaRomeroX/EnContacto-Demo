@@ -1,8 +1,9 @@
 import { useContext, useState } from "react"
 import { SalasContext } from "../../context/salasContext"
 import { EditForm } from './EditForm'
+import type { Id } from "../../mock"
 
-type FichaProp = { nombre: string, id: number }
+type FichaProp = { nombre: string, id: Id }
 export const FichaSala = ({ nombre, id }: FichaProp) => {
   const { eliminarSala, vaciarChat } = useContext(SalasContext)
   const [editar, setEditar] = useState(false)

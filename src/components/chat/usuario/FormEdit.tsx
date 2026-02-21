@@ -1,7 +1,8 @@
 import { useContext, useState, type FormEvent } from "react"
 import { UsuarioContext } from "../../../context/usuarioContext"
+import type { Id } from "../../../mock"
 
-type FormProps = { id: number, cerrar: () => void }
+type FormProps = { id: Id, cerrar: () => void }
 export const FormEdit = ({ id, cerrar } : FormProps) => {
   const { editarUsuario, usuario } = useContext(UsuarioContext)
   const [inputFoto, setFoto] = useState(usuario?.foto)

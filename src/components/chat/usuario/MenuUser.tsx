@@ -12,14 +12,15 @@ export const MenuUser = ({ usuario }: MenuProps) => {
   const navigate = useNavigate()
   const [editar, setEditar] = useState(false)
 
+  const idInvalido = 'sala-0-0-0-0-0'
   function handleLogout () {
-    asignarSala(0)
+    asignarSala(idInvalido)
     logout()
     navigate('/login')
   }
 
   function handleAdmin () {
-    asignarSala(0)
+    asignarSala(idInvalido)
     navigate('/admin')
   }
 

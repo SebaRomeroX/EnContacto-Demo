@@ -1,5 +1,5 @@
 import { createContext, type PropsWithChildren } from 'react'
-import { USUARIOS, type Usuario } from '../mock'
+import { USUARIOS, type Id, type UserRol, type Usuario } from '../mock'
 import { useState } from 'react'
 
 interface UsuarioContextType {
@@ -8,8 +8,8 @@ interface UsuarioContextType {
   logout: () => void
   usuarios: Usuario[]
   crearUsuario: (nombre: string, foto: string) => void
-  eliminarUsuario: (id: number) => void
-  editarUsuario: (inputContra: string, inputFoto: string, id: number) => void
+  eliminarUsuario: (id: Id) => void
+  editarUsuario: (inputContra: string, inputFoto: string, id: Id) => void
 }
 
 const defaultContextValue: UsuarioContextType = {
@@ -57,20 +57,27 @@ export const UsuarioProvider = ({ children }: PropsWithChildren) => {
 
   function crearUsuario (nombre: string, foto: string) {
     if (usuarios.find(user => user.nombre === nombre)) return
-    console.log(foto)
 
-    const ultimoId = usuarios[usuarios.length -1].id
-    const newId = ultimoId + 1
-    const newUsuario = { nombre, foto, id: newId, contra: '777', rol: 'user' }
+    //BOILERPLATE USER
+    // let newId: Id
+    let newId: Id
+    do {
+      newId = `user-${crypto.randomUUID()}`
+    } while (USUARIOS.find(user => user.id == newId));
+
+    //BOILERPLATES
+    //CONTRASEÑA Y ROL => DATOS FIJOS
+    const rol: UserRol = 'user'
+    const newUsuario = { nombre, foto, id: newId, contra: '777', rol }
     setUsuarios([...usuarios, newUsuario])
   }
 
-  function eliminarUsuario (id: number) {
+  function eliminarUsuario (id: Id) {
     const newUsuarios = usuarios.filter(user => user.id !== id)
     setUsuarios(newUsuarios)
   }
 
-  function editarUsuario (inputContra: string, inputFoto: string, id: number) {
+  function editarUsuario (inputContra: string, inputFoto: string, id: Id) {
     const newUsuarios = usuarios.map(user => (
       user.id === id
         ? {...user, foto: inputFoto, contra: inputContra}

@@ -1,15 +1,15 @@
 import { createContext, useState, type PropsWithChildren } from 'react'
-import { type Sala, SALAS } from '../mock'
+import { type Id, type Sala, SALAS } from '../mock'
 
 interface SalaContextType {
   sala: Sala | undefined;
   salas: Sala[];
-  agregarMensaje: (texto: string, id: number) => void;
-  asignarSala: (id: number) => void;
-  eliminarSala: (id: number) => void;
+  agregarMensaje: (texto: string, id: Id) => void;
+  asignarSala: (id: Id) => void;
+  eliminarSala: (id: Id) => void;
   crearSala: (nombre: string) => void;
-  vaciarChat: (id: number) => void;
-  cambiarNombre: (nombre: string, id: number) => void;
+  vaciarChat: (id: Id) => void;
+  cambiarNombre: (nombre: string, id: Id) => void;
 }
 
 const defaultContextValue: SalaContextType = {
@@ -30,12 +30,12 @@ export const SalasProvider = ({ children } : PropsWithChildren) => {
   const [sala, setSala] = useState<Sala>() // <- modificar este nombre para evitar confuciones
 
   // id type Number !!!!!! hay que cambiar esto !!! algo mas confiable
-  function asignarSala (id: number) {
+  function asignarSala (id: Id) {
     const newSala = salas.find(salaDB => salaDB.id === id)
     setSala(newSala)
   }
   
-  function agregarMensaje (texto: string, id: number) {
+  function agregarMensaje (texto: string, id: Id) {
     if (!sala) return
 
     const newMensaje = { usuarioId: id, mensaje: texto }
@@ -44,7 +44,7 @@ export const SalasProvider = ({ children } : PropsWithChildren) => {
     setSala({...sala, chat: newChat})
   }
 
-  function eliminarSala (id: number) {
+  function eliminarSala (id: Id) {
     const newSalas = salas.filter(sala => sala.id !== id)
     setSalas(newSalas)
   }
@@ -52,13 +52,17 @@ export const SalasProvider = ({ children } : PropsWithChildren) => {
   function crearSala (nombre: string) {
     if (salas.find(sala => sala.nombre === nombre)) return
 
-    const ultimoId = salas[salas.length -1].id
-    const newId = ultimoId + 1
+    //ARREGLAR ESTO // CODIGO IMPERATIVO // BOILERPLATE
+    let newId: Id
+    do {
+      newId = `sala-${crypto.randomUUID()}`
+    } while (SALAS.find(sala => sala.id == newId));
+
     const newSala = { nombre, id: newId, chat: [] }
     setSalas([...salas, newSala])
   }
 
-  function vaciarChat (id: number) {
+  function vaciarChat (id: Id) {
     const newSalas = salas.map(sala => {
       if (sala.id === id) {
         return {...sala, chat: []}
@@ -69,7 +73,7 @@ export const SalasProvider = ({ children } : PropsWithChildren) => {
     setSalas(newSalas)
   }
 
-  function cambiarNombre (nombre: string, id: number) {
+  function cambiarNombre (nombre: string, id: Id) {
     const newSalas = salas.map(sala => {
       if (sala.id === id) {
         return {...sala, nombre}
