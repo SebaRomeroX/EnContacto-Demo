@@ -18,7 +18,7 @@ export const FormEdit = ({ id, cerrar } : FormProps) => {
 
   return (
     <section>
-      <h4>Form Edit</h4>
+      <h4>Editar Perfil</h4>
       <form onSubmit={handleSubmit} className="form-edit-user">
         <input
           type='text'

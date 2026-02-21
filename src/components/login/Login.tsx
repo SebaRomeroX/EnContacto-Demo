@@ -23,7 +23,7 @@ export const Login = () => {
       if (logear(inputs)) {
         navigate(RUTAS.chat)
       } else {
-        setError('Error en los datos ingresados')
+        setError('Los datos no coinciden con ningun perfil')
         inputRef.current?.focus()
       }
       setInputs(inputsIniciales)
@@ -45,13 +45,13 @@ export const Login = () => {
         />
         <input
           type='password'
-          placeholder='contra'
+          placeholder='contraseña'
           onChange={(e) => handleInput(e, 'pass')}
           value={inputs.pass}
           required
         />
         { error && <p className='error'>{error}</p> }
-        <button>Log</button>
+        <button>Entrar</button>
       </form>
     </section>
   )

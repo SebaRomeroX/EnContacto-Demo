@@ -36,7 +36,7 @@ export const CajaMensaje = () => {
       <input
         value={texto}
         onChange={handleTexto}
-        placeholder='Escribe algo ...'
+        placeholder='Escribe aqui ...'
         ref={inputRef}
       />
       <button> ▶ </button>

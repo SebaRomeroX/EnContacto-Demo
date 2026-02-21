@@ -29,9 +29,9 @@ export const MenuUser = ({ usuario }: MenuProps) => {
     editar
       ? <FormEdit id={usuario.id} cerrar={() => setEditar(false)} />
       : <section className='botones'>
-        <button onClick={() => setEditar(true)}>Editar</button>
+        <button onClick={() => setEditar(true)}>Editar Perfil</button>
         { usuario.rol === 'admin' &&
-          <button className="link" onClick={handleAdmin}>Admin</button>
+          <button className="link" onClick={handleAdmin}>Administrar</button>
         }
         <button className="link" onClick={handleLogout}>Cerrar Sesion</button>
       </section>

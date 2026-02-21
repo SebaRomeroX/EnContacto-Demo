@@ -6,7 +6,7 @@ export const ListaSalas = () => {
 
   return (
     <section className='lista-salas-section'>
-      <h2>Salas de Chat</h2>
+      <h2>Salas</h2>
       <ul>
         {
           salas?.map(sala => (

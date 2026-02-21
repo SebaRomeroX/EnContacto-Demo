@@ -22,7 +22,7 @@ export const Chat = () => {
               { salaActiva.chat?.map((msj, index) => <Mensaje key={index} msj={msj} /> )}
             </ul>
           </section>
-          : <p>Elige sala</p>
+          : <p>Elige un sala</p>
       }
     </section>
   )

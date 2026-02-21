@@ -13,7 +13,6 @@ export const FichaUsuario = ({ usuario }: FichaProps) => {
       <img src={`https://unavatar.io/${usuario.foto}`}/>
       <section>
         <h4>{usuario.nombre}</h4>
-        <p>#{usuario.id}</p>
       </section>
       <section className='botones'>
         <button onClick={() => eliminarUsuario(usuario.id)}>Eliminar</button>

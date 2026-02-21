@@ -39,7 +39,7 @@ export const Admin = () => {
     <section className='admin-page'>
       <section>
         <h2>Administrador</h2>
-        <Link to={RUTAS.chat}>Ir a chats</Link>
+        <Link to={RUTAS.chat}>Volver a salas</Link>
       </section>
 
       <section>

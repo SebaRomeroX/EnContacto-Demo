@@ -8,7 +8,7 @@ import { RUTAS } from './constants/consts'
 const Home = () => {
   return (
     <section className='home-page'>
-      <h1>Bienvenid@ a la app de comunicaciones</h1>
+      <h1>"Tu equipo siempre EnContacto"</h1>
       <p>Esta es una plataforma que provee distintas salas de chat</p>
       <p>El perfil de administrador te permitira agregar y eliminar usuarios y salas</p>
       <Link className='link' to={RUTAS.login}>Iniciar Sesion</Link>

@@ -20,7 +20,7 @@ export const Mensaje = ({ msj }: MensajeProps) => {
   
   return (
     <li>
-      <img src={`https://unavatar.io/${datos.foto}`}/>
+      <img src={datos.foto}/>
       <section className='mensaje'>
         <h4>{datos.nombre}</h4>
         <p>{mensaje}</p>
