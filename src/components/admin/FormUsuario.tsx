@@ -17,24 +17,24 @@ export const FormUsuario = () => {
   }
 
   return (
-    <section>
-      <h4>Nuevo Usuario</h4>
-      <form onSubmit={handleCrear}>
-        <input
-          type="text"
-          placeholder='Nombre de usuario'
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder='Foto de usuario'
-          value={foto}
-          onChange={(e) => setFoto(e.target.value)}
-        />
-        <button className='boton'>Crear</button>
-      </form>
-    </section>
+    <form className='formulario' onSubmit={handleCrear}>
+      <legend>Nuevo Usuario</legend>
+      <input
+        type="text"
+        placeholder='Nombre de usuario'
+        value={nombre}
+        onChange={(e) => setNombre(e.target.value)}
+        required
+        className='input-texto'
+      />
+      <input
+        type="text"
+        placeholder='Foto de usuario'
+        value={foto}
+        onChange={(e) => setFoto(e.target.value)}
+        className='input-texto'
+      />
+      <button className='boton'>Crear</button>
+    </form>
   )
 }

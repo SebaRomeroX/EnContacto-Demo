@@ -18,7 +18,10 @@ export const PaginaChats = () => {
   return (
     user &&
     <section>
-      <PestañaUsuario />
+      <section className='chats-header'>
+        <h2>EnContacto</h2>
+        <PestañaUsuario />
+      </section>
       <section className='pantalla' >
         <ListaSalas />
         <Chat />

@@ -45,7 +45,7 @@ export const USUARIOS: Usuario[] = [
     rol: 'user'
   },
   { id: 'user-d22dee92-ec52-465f-9d70-19f79972715b',
-    foto: 'null',
+    foto: '0.png',
     nombre: 'Administrador',
     contra: '333',
     rol: 'admin'

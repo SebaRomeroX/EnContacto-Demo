@@ -35,7 +35,8 @@ function getUsuario (admin: Usuario) {
 
 export const UsuarioProvider = ({ children }: PropsWithChildren) => {
   const [usuarios, setUsuarios] = useState(USUARIOS)
-  const [usuario, setUsuario] = useState(getUsuario(usuarios[3])) // temporal, desarrollo
+  // const [usuario, setUsuario] = useState(getUsuario(usuarios[7])) NOSE PORQUE ESTA ASI // REVISAR ESTO
+  const [usuario, setUsuario] = useState(usuarios[7]) // PARA DESARROLLO SIEMPRE ADMIN
 
     // REDUCER ??
   

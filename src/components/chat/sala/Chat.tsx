@@ -16,12 +16,10 @@ export const Chat = () => {
     <section className="sala">
       {
         salaActiva
-          ? <section>
-            <h2>{salaActiva.nombre}</h2>
-            <ul className="chat-section" ref={contenedorRef}>
+          ? <ul className="chat-section" ref={contenedorRef}>
+              <h2>{salaActiva.nombre}</h2>
               { salaActiva.chat?.map((msj, index) => <Mensaje key={index} msj={msj} /> )}
             </ul>
-          </section>
           : <p>Elige un sala</p>
       }
     </section>

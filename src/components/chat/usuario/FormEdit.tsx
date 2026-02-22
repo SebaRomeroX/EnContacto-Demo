@@ -18,19 +18,21 @@ export const FormEdit = ({ id, cerrar } : FormProps) => {
 
   return (
     <section>
-      <h4>Editar Perfil</h4>
-      <form onSubmit={handleSubmit} className="form-edit-user">
+      <form onSubmit={handleSubmit} className="formulario">
+        <legend>Editar Perfil</legend>
         <input
           type='text'
           value={inputFoto}
           onChange={(e) => setFoto(e.target.value)}
+          className='input-texto'
         />
         <input
           type='text'
           value={inputContra}
           onChange={(e) => setContra(e.target.value)}
+          className='input-texto'
         />
-        <button>Cambiar</button>
+        <button className="boton">Cambiar</button>
       </form>
     </section>
   )

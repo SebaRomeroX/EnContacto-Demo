@@ -37,27 +37,27 @@ export const Admin = () => {
 
   return (
     <section className='admin-page'>
-      <section>
+      <section className='admin-header'>
         <h2>Administrador</h2>
-        <Link to={RUTAS.chat}>Volver a salas</Link>
+        <Link className='boton' to={RUTAS.chat}>Volver a salas</Link>
       </section>
 
       <section>
-        <h3>Usuarios</h3>
-        <FormUsuario />
         <ul className='lista-admin'>
+          <h3>Usuarios</h3>
           { usuarios.map(usuario => <FichaUsuario usuario={usuario} /> )}
         </ul>
+        <FormUsuario />
       </section>
 
       <section>
-        <h3>Salas</h3>
-        <FormSala />
         <ul className='lista-admin'>
+          <h3>Salas</h3>
           { salas.map(sala => (
             <FichaSala key={sala.id} nombre={sala.nombre} id={sala.id} />
           ))}
         </ul>
+        <FormSala />
       </section>
     </section>
   )

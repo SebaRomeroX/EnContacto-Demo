@@ -14,15 +14,16 @@ export const EditForm = ({ nombre, id, ocultar }: FormProps) => {
   }
 
   return (
-    <form onSubmit={hanldeSubmit}>
+    <form className='formulario' onSubmit={hanldeSubmit}>
       <input
         type="text"
         value={input}
         placeholder='Nuevo nombre'
         onChange={(e) => setInput(e.target.value)}
         autoFocus
+        className='input-texto'
       />
-      <button>Cambiar</button>
+      <button className="boton">Cambiar</button>
     </form>
   )
 }

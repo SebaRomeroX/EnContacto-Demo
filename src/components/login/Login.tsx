@@ -33,7 +33,7 @@ export const Login = () => {
   return (
     <section className='log-section'>
       <h2>Inicio de Sesion</h2>
-      <form onSubmit={handleLog}>
+      <form className='formulario' onSubmit={handleLog}>
         <input
           type='text'
           placeholder='usuario'
@@ -42,6 +42,7 @@ export const Login = () => {
           autoFocus
           required
           ref={inputRef}
+          className='input-texto'
         />
         <input
           type='password'
@@ -49,9 +50,10 @@ export const Login = () => {
           onChange={(e) => handleInput(e, 'pass')}
           value={inputs.pass}
           required
+          className='input-texto'
         />
         { error && <p className='error'>{error}</p> }
-        <button>Entrar</button>
+        <button className='boton'>Entrar</button>
       </form>
     </section>
   )

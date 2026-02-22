@@ -10,12 +10,12 @@ export const FichaUsuario = ({ usuario }: FichaProps) => {
   
   return (
     <li>
-      <img src={`https://unavatar.io/${usuario.foto}`}/>
-      <section>
+      <section className="info-user">
+        <img src={usuario.foto}/>
         <h4>{usuario.nombre}</h4>
       </section>
       <section className='botones'>
-        <button onClick={() => eliminarUsuario(usuario.id)}>Eliminar</button>
+        <button className="boton" onClick={() => eliminarUsuario(usuario.id)}>Eliminar</button>
       </section>
     </li>
   )

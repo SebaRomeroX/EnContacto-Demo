@@ -15,14 +15,15 @@ export const FormSala = () => {
 
   return (
     <section>
-      <h4>Nueva Sala</h4>
-      <form onSubmit={handleCrear}>
+      <form className='formulario' onSubmit={handleCrear}>
+        <legend>Nueva Sala</legend>
         <input
           type="text"
           placeholder='Nombre de sala'
           onChange={(e) => setNombre(e.target.value)}
           value={nombre}
           required
+          className='input-texto'
         />
         <button className='boton'>Crear</button>
       </form>
