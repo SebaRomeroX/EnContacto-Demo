@@ -1,4 +1,4 @@
-import { createContext, useState, type PropsWithChildren } from 'react'
+import { createContext, useEffect, useState, type PropsWithChildren } from 'react'
 import type { Id, Sala } from '../types/types';
 import { crearNewId } from '../utils/crearNewId';
 import { SALAS } from '../mocks/mock';
@@ -29,7 +29,11 @@ export const SalasContext = createContext<SalaContextType>(defaultContextValue);
 
 export const SalasProvider = ({ children } : PropsWithChildren) => {
   const [salas, setSalas] = useState(SALAS)
-  const [salaActiva, setSalaActiva] = useState<Sala | undefined>(SALAS[0])
+  const [salaActiva, setSalaActiva] = useState<Sala | undefined>()
+
+  useEffect(() => {
+    setSalaActiva(salas[0])
+  }, [salas])
 
   function asignarSala (id: Id) {
     const newSala = salas.find(salaDB => salaDB.id === id)

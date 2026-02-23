@@ -7,7 +7,7 @@ import { RUTAS } from '../../constants/consts'
 
 export const PaginaChats = () => {
   return (
-    <section>
+    <section className='pagina-chats'>
       <section className='chats-header'>
         <h2>EnContacto</h2>
         <Link className='boton' to={RUTAS.admin}>Administrar</Link>

@@ -1,7 +1,27 @@
+.pagina-chats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+
+/*--------------------------------------------*/
+
+.chats-header {
+  background-color: black;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*--------------------------------------------*/
 /* PANTALLA  */
 
 .pantalla {
   display: flex;
+  height: 100%;
 }
 
 /* LISAT SALAS */
@@ -32,7 +52,6 @@
 /*   SALA    */
 
 .sala {
-  height: 84vh;
   width: 100%;
   padding: 1em;
 }
@@ -45,9 +64,9 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
-  height: 80vh;
+  height: 77vh;
   
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .chat-section li {
@@ -69,6 +88,7 @@
 }
 
 
+/*--------------------------------------------*/
 /* MENSAJEADOR */
 
 .caja-mensaje {
@@ -76,8 +96,7 @@
   justify-content: space-evenly;
   align-items: center;
 
-  height: 60px;
-  width: 100%;
+  padding: .4em;
   background-color: black;
 }
 
@@ -103,12 +122,12 @@
 }
 
 
-/*--------------------------------------------*/
-
-.chats-header {
-  background-color: black;
-  padding: 1em 1.4em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+@media all and (min-width:1024px) {
+  .lista-salas-section {
+    padding: 1em 2em;
+  }
+  .sala {
+    max-width: 1124px;
+    padding-left: 4em;
+  }
 }

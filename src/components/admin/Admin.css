@@ -59,3 +59,11 @@
 .lista-admin .boton {
   width: 146px;
 }
+
+
+@media all and (min-width:1024px) {
+  .admin-page {
+    max-width: 600px;
+    margin: auto;
+  }
+}
