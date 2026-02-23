@@ -54,21 +54,33 @@ export const USUARIOS: Usuario[] = [
 
 export const SALAS: Sala[] = [
   {
-    nombre: 'Sala Front',
+    nombre: 'Tutorial',
     id: 'sala-f54828dc-35af-485a-ac9e-9b776f4afa1a',
     chat: [
       {
-        mensaje: 'Los mensajes aqui no se guardaran',
+        mensaje: 'Bienvenido a EnContacto !! Esta app te ofrece distintas salas de chat para comunicarte con tus equipos',
         usuarioId: USUARIOS[1].id
       },
       {
-        mensaje: 'En la pestaña de usuario puedes cambiar tu foto y contraseña',
+        mensaje: 'Puedes crear, modificar y eliminar las salas',
+        usuarioId: USUARIOS[3].id
+      },
+      {
+        mensaje: 'Lo mismo con los usuarios',
+        usuarioId: USUARIOS[4].id
+      },
+      {
+        mensaje: 'Para acceder a estas funciones dale al boton Aministrar',
         usuarioId: USUARIOS[2].id
       },
       {
-        mensaje: 'El boton de "admin" te llevara a donde puedes modificar las salas y usuarios',
+        mensaje: 'Escribe todos los mensajes que quieras, aunque estos no se guardaran',
         usuarioId: USUARIOS[0].id
-      }
+      },
+      {
+        mensaje: 'Estos son mensajes simulados de usuarios tambien simulados',
+        usuarioId: USUARIOS[1].id
+      },
     ]
   },
   {
@@ -76,38 +88,4 @@ export const SALAS: Sala[] = [
     id: 'sala-a2e4d884-4aec-43c0-a43a-09ee2297989d',
     chat: []
   },
-  {
-    nombre: 'Asistencia',
-    id: 'sala-23a7952d-fa95-4c53-bc77-f184166bcebf',
-    chat: [
-      {
-        mensaje: 'Presente',
-        usuarioId: USUARIOS[0].id
-      },
-      {
-        mensaje: 'Presente',
-        usuarioId: USUARIOS[1].id
-      },
-      {
-        mensaje: 'Presente',
-        usuarioId: USUARIOS[2].id
-      },
-      {
-        mensaje: 'Presente',
-        usuarioId: USUARIOS[3].id
-      },
-      {
-        mensaje: 'Presente',
-        usuarioId: USUARIOS[4].id
-      },
-      {
-        mensaje: 'Presente',
-        usuarioId: USUARIOS[5].id
-      },
-      {
-        mensaje: 'Presente',
-        usuarioId: USUARIOS[6].id
-      },
-    ]
-  }
 ]

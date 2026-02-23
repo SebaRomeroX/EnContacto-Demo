@@ -6,57 +6,23 @@ import { USUARIOS } from '../mocks/mock'
 
 interface UsuarioContextType {
   usuario: Usuario | undefined
-  logear: (inputs: {user: string, pass: string}) => boolean | undefined
-  logout: () => void
   usuarios: Usuario[]
   crearUsuario: (nombre: string, foto: string) => void
   eliminarUsuario: (id: Id) => void
-  editarUsuario: (inputContra: string, inputFoto: string, id: Id) => void
 }
 
 const defaultContextValue: UsuarioContextType = {
   usuario: undefined,
-  logear: () => false,
-  logout: () => {},
   usuarios: [],
   crearUsuario: () => {},
   eliminarUsuario: () => {},
-  editarUsuario: () => {},
 };
 
 export const UsuarioContext = createContext(defaultContextValue)
 
-// SACAR ESTO A SERVISES
-function getUsuario (admin: Usuario) {
-  const user = localStorage.getItem('user')
-  return user ? JSON.parse(user) : admin // para desarrollo // siempre logeado
-  // return JSON.parse(user) // definitivo
-}
-
 export const UsuarioProvider = ({ children }: PropsWithChildren) => {
   const [usuarios, setUsuarios] = useState(USUARIOS)
-  // const [usuario, setUsuario] = useState(getUsuario(usuarios[7])) NOSE PORQUE ESTA ASI // REVISAR ESTO
-  const [usuario, setUsuario] = useState(usuarios[7]) // PARA DESARROLLO SIEMPRE ADMIN
-
-    // REDUCER ??
-  
-  function logear (inputs: {user: string, pass: string}) {
-    const newUsuario = usuarios.find(user =>
-      user.nombre === inputs.user &&
-      user.contra === inputs.pass
-    )
-
-    if (newUsuario) {
-      localStorage.setItem('user', JSON.stringify(newUsuario))
-      setUsuario(newUsuario)
-      return true
-    } 
-  }
-
-  function logout () {
-    localStorage.removeItem('user')
-    setUsuario(undefined)
-  }
+  const usuario = USUARIOS[7]
 
   function crearUsuario (nombre: string, foto: string) {
     if (usuarios.find(user => user.nombre === nombre)) return
@@ -73,26 +39,11 @@ export const UsuarioProvider = ({ children }: PropsWithChildren) => {
     setUsuarios(newUsuarios)
   }
 
-  function editarUsuario (inputContra: string, inputFoto: string, id: Id) {
-    const newUsuarios = usuarios.map(user => (
-      user.id === id
-        ? {...user, foto: inputFoto, contra: inputContra}
-        : user
-    ))
-
-    setUsuarios(newUsuarios)
-    const userActualizado = newUsuarios.find(user => user.id === id)
-    setUsuario(userActualizado)
-  }
-
   const value: UsuarioContextType = {
     usuario,
-    logear,
-    logout,
     usuarios,
     crearUsuario,
     eliminarUsuario,
-    editarUsuario
   }
 
   return (

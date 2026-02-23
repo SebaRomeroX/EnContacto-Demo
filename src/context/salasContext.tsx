@@ -15,7 +15,7 @@ interface SalaContextType {
 }
 
 const defaultContextValue: SalaContextType = {
-  salaActiva: undefined,
+  salaActiva: SALAS[0],
   salas: [],
   agregarMensaje: () => {},
   asignarSala: () => {},
@@ -29,7 +29,7 @@ export const SalasContext = createContext<SalaContextType>(defaultContextValue);
 
 export const SalasProvider = ({ children } : PropsWithChildren) => {
   const [salas, setSalas] = useState(SALAS)
-  const [salaActiva, setSalaActiva] = useState<Sala>()
+  const [salaActiva, setSalaActiva] = useState<Sala | undefined>(SALAS[0])
 
   function asignarSala (id: Id) {
     const newSala = salas.find(salaDB => salaDB.id === id)
