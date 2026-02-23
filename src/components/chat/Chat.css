@@ -107,41 +107,8 @@
 
 .chats-header {
   background-color: black;
-  padding: 10px;
-}
-
-/* PESTAÑA USUARIO */
-
-.pestaña-usuario-section {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  background-color: inherit;
-  border-radius: 0 0 .6em .6em;
+  padding: 1em 1.4em;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.pestaña-usuario-section .info {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-} 
-
-.pestaña-usuario-section img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.tip {
-  background-color: inherit;
-  color: aliceblue;
-  border: none;
-  cursor: pointer;
-}
-
-.pestaña-usuario-section .input-texto {
-  width: 160px;
 }

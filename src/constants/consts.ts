@@ -1,6 +1,4 @@
 export const RUTAS = {
-  landing: '/',
-  login: '/login',
-  chat: '/chat',
+  chat: '/',
   admin: '/admin'
 }
