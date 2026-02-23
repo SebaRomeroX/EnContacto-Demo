@@ -141,3 +141,7 @@
   border: none;
   cursor: pointer;
 }
+
+.pestaña-usuario-section .input-texto {
+  width: 160px;
+}
